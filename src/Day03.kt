@@ -14,28 +14,10 @@ fun main() {
         return erg.joinToString("").toLong()
     }
 
-    fun part1(input: List<String>): Int {
-        var sum = 0
+    fun part1(input: List<String>): Long {
+        var sum = 0L
         input.forEach { bank ->
-            var tmp = bank.toList().dropLast(1).map { it.digitToInt() }
-            var currentMax = tmp.first()
-            var currentMaxIndex = 0
-            for (i in tmp.indices) {
-                if (tmp[i] > currentMax) {
-                    currentMax = tmp[i]
-                    currentMaxIndex = i
-                }
-            }
-
-            tmp = bank.map { it.digitToInt() }.toMutableList()
-            tmp.removeAt(currentMaxIndex)
-            var currentMaxSecondBattery = Int.MIN_VALUE
-            for (i in currentMaxIndex..<tmp.size) {
-                if (tmp[i] > currentMaxSecondBattery) {
-                    currentMaxSecondBattery = tmp[i]
-                }
-            }
-            sum += ("$currentMax$currentMaxSecondBattery").toInt()
+            sum += getLargestNumber(bank, 2)
         }
         return sum
     }
@@ -49,7 +31,7 @@ fun main() {
     }
 
     val testInput = readInput("Day${dayNr}_test")
-    check(part1(testInput) == 357)
+    check(part1(testInput) == 357L)
     check(part2(testInput) == 3121910778619)
 
     val input = readInput("Day${dayNr}")
