@@ -1,6 +1,19 @@
 fun main() {
     val dayNr = "03"
 
+    fun getLargestNumber(bank: String, digits: Int): Long {
+        var copy = bank.toMutableList().map { it.digitToInt() }
+        val erg = mutableListOf<Int>()
+        for (i in digits - 1 downTo 0) {
+            val head = copy.dropLast(i)
+            val max = head.max()
+            val maxIndex = head.indexOf(max)
+            erg.add(max)
+            copy = copy.drop(maxIndex + 1)
+        }
+        return erg.joinToString("").toLong()
+    }
+
     fun part1(input: List<String>): Int {
         var sum = 0
         input.forEach { bank ->
@@ -30,16 +43,7 @@ fun main() {
     fun part2(input: List<String>): Long {
         var sum = 0L
         input.forEach { bank ->
-            var copy = bank.toMutableList().map { it.digitToInt() }
-            val erg = mutableListOf<Int>()
-            for (i in 11 downTo 0) {
-                val head = copy.dropLast(i)
-                val max = head.max()
-                val maxIndex = head.indexOf(max)
-                erg.add(max)
-                copy = copy.drop(maxIndex + 1)
-            }
-            sum += erg.joinToString("").toLong()
+            sum += getLargestNumber(bank, 12)
         }
         return sum
     }
