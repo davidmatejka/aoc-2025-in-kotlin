@@ -34,15 +34,15 @@ fun main() {
             val mergedRange = mergedRanges[i]
 
             // check if one range is fully embeddable in the other
-            if (range.first >= mergedRange.first
-                && range.last <= mergedRange.last
+            if (range.first in mergedRange
+                && range.last in mergedRange
                 ) {
                 // range is already represented by a mergedRange -> return
                 return
             }
 
-            if ( range.first <= mergedRange.first
-                && range.last >= mergedRange.last
+            if ( range.first in mergedRange
+                && range.last in mergedRange
             ) {
                 // new incoming range is bigger than the one checking -> replace
                 mergedRanges[i] = range
