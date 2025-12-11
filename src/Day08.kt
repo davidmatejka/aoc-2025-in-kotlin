@@ -1,4 +1,3 @@
-import java.lang.Math.pow
 import kotlin.math.pow
 
 fun main() {
@@ -62,7 +61,7 @@ fun main() {
         val sortedMap = map.toList().sortedBy { it.second }.toMap()
 
         var k = 0
-        for ((pair, dist) in sortedMap) {
+        for ((pair, _) in sortedMap) {
             if (k == connectionLimit) {
                 break
             }
@@ -102,7 +101,7 @@ fun main() {
         val map = boxesToDist(junctionBoxes)
         val sortedMap = map.toList().sortedBy { it.second }.toMap()
 
-        for ((pair, dist) in sortedMap) {
+        for ((pair, _) in sortedMap) {
             val (p, q) = pair
                 if (p in q.connections || q in p.connections) {
                     continue

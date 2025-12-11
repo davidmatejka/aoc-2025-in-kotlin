@@ -101,7 +101,7 @@ fun main() {
             acc
         }
 
-        // draw(input) draw the input to see the special figure
+        draw(input) //draw the input to see the special figure
 
         val pairs = mutableListOf<Pair<Coord,Coord>>()
         for (i in input.indices) {
