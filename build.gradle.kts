@@ -8,6 +8,10 @@ sourceSets {
     }
 }
 
+dependencies {
+    implementation("org.jetbrains.kotlinx:kandy-lets-plot:0.8.0")
+}
+
 tasks {
     wrapper {
         gradleVersion = "9.2.1"
